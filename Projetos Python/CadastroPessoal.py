@@ -59,12 +59,29 @@ print('-=' * 30)
 print(f'Ao todo foram {len(galera)} pessoas cadastradas')
 media = soma / len(galera)
 print(f' A média de idade é de {media:5.2f}. ')
-print(f'As mulheres cadastradas foram', end='')
 
-for p in galera: #Iterando sobre a lista de pessoas
+#Listando as mulheres e homens cadastrados
+mulheres = []
+homens = []
+
+for p in galera:
     if p['sexo'] == 'F':
-        print(f' {p["nome"] }' , end='')
-print()
+        mulheres.append(p['nome'])
+    elif p['sexo'] == 'M':
+        homens.append(p['nome'])
+
+print(' As mulheres cadastradas foram: ', end='')
+if mulheres:
+    print(*mulheres)
+else:
+    print('Nenhuma mulher foi cadastrada.')
+
+print(' Os homens cadastrados foram: ', end='')
+if homens:
+    print(*homens)
+else:
+    print('Nenhum homem foi cadastrado.')
+
 
 #Lista de pessoas que estão acima da média da idade
 print('Lista de pessoas que estão acima da média da idade:')

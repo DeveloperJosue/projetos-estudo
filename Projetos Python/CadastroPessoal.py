@@ -9,9 +9,21 @@ import time
 print(' Cadastro Pessoal ') 
 time.sleep(1)
 
-while True: #Definindo o nome da pessoa
-    pessoa.clear()
-    pessoa['nome'] = str(input('Nome: '))  
+while True:
+    while True: #Validação do nome
+        pessoa.clear()
+        try:
+            pessoa['nome'] = str(input('Nome: ')).strip().title()
+            if not pessoa['nome']:
+                print('ERRO! O nome não pode ser vazio. Digite novamente.')
+                break
+            elif pessoa['nome'].isnumeric():
+                print('ERRO! O nome não pode ser um número. Digite novamente.')
+            else:
+                break
+        except ValueError:
+            print('ERRO! Por favor, digite um nome válido.')
+        
 
     while True: #Validação do sexo
         pessoa['sexo'] = str(input('Sexo [M/F]: ')).upper() [0]
@@ -53,6 +65,7 @@ for p in galera: #Iterando sobre a lista de pessoas
     if p['sexo'] == 'F':
         print(f' {p["nome"] }' , end='')
 print()
+
 #Lista de pessoas que estão acima da média da idade
 print('Lista de pessoas que estão acima da média da idade:')
 for p in galera:

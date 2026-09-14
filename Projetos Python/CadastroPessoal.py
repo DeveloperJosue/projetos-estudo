@@ -19,7 +19,18 @@ while True: #Definindo o nome da pessoa
             break
         print('ERRO! Por favor, digite apenas M ou F.')
 
-    pessoa['idade'] = int(input('Idade: '))  #Validação da idade
+
+    while True: #Validação do idade
+        try:
+            pessoa['idade'] = int(input('Idade: '))
+            if pessoa['idade'] < 0:
+                print('ERRO! Idade não pode ser negativa. Digite novamente.')
+            else:
+                break
+            print('ERRO! Idade não pode ser negativa. Digite novamente.')
+        except ValueError:
+            print('ERRO! Por favor, digite apenas números para a idade.')
+
     soma += pessoa['idade']
     galera.append(pessoa.copy())
 
